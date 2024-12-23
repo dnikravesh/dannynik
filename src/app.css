@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+	font-family: 'VT323', monospace;
+	@apply bg-blue px-6 text-4xl uppercase text-neutral selection:bg-neutral selection:text-blue md:text-6xl lg:text-8xl;
+}
+
+a {
+	@apply underline outline-none hover:bg-white hover:text-blue active:bg-white active:text-blue;
+}
+
+li.active > a {
+	@apply bg-white text-blue;
+}
