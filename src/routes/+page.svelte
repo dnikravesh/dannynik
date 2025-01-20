@@ -48,6 +48,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Danny Nikravesh</title>
+	<meta name="description" content="Software Engineer @[DS]" />
+	<meta name="keywords" content="Danny Nikravesh, Software Engineer, DS, Delicious Simplicity" />
+</svelte:head>
 <div class="text-center text-4xl md:text-6xl lg:text-8xl">
 	{#each dashes as dash, index}
 		<span class={index % 2 === 0 ? 'hidden xl:inline' : 'inline'}>{dash}</span>
@@ -59,7 +64,7 @@
 </div>
 
 <div class="mx-auto mt-8 max-w-xl space-y-6 sm:max-w-2xl lg:mt-16 lg:max-w-5xl">
-	<div class="">Danny Nikravesh</div>
+	<div>Danny Nikravesh</div>
 	<div class="my-4">
 		Software Engineer <a
 			target="_blank"
