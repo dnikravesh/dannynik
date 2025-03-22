@@ -14,12 +14,6 @@
 }
 
 html {
-	@apply bg-[var(--blue)];
-}
-
-body {
-	font-family: 'VT323', monospace;
-
 	/* Simulate scan lines using blue tones */
 	background: linear-gradient(
 		to top,
@@ -30,6 +24,11 @@ body {
 	);
 	background-size: 100% 1px;
 	background-repeat: repeat-y;
+	@apply overflow-hidden bg-[var(--blue)];
+}
+
+body {
+	font-family: 'VT323', monospace;
 
 	/* Toned-down CRT flicker */
 	animation: textflicker 1s infinite alternate ease-in-out;
