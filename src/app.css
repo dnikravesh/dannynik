@@ -2,7 +2,7 @@
 
 :root {
 	--blue: #0a0192;
-	--neutral: #cccccc;
+	--neutral: #eaeaea;
 }
 
 @font-face {
@@ -13,12 +13,27 @@
 	font-display: swap;
 }
 
-html: {
+html {
 	@apply bg-[var(--blue)];
 }
 
 body {
 	font-family: 'VT323', monospace;
+
+	/* Simulate scan lines using blue tones */
+	background: linear-gradient(
+		to top,
+		var(--blue),
+		var(--blue),
+		color-mix(in srgb, var(--blue) 70%, black),
+		color-mix(in srgb, var(--blue) 70%, black)
+	);
+	background-size: 100% 1px;
+	background-repeat: repeat-y;
+
+	/* Toned-down CRT flicker */
+	animation: textflicker 1s infinite alternate ease-in-out;
+
 	@apply min-h-screen bg-[var(--blue)] px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;
 }
 
@@ -32,4 +47,22 @@ a {
 
 li.active > a {
 	@apply bg-white text-[var(--blue)];
+}
+
+#flicker-line {
+	@apply pointer-events-none fixed top-0 left-0 z-10 h-0.5 w-full bg-white opacity-0 mix-blend-screen transition-opacity duration-75 ease-in-out;
+}
+
+/* Subtle CRT flicker animation */
+@keyframes textflicker {
+	from {
+		text-shadow:
+			0.5px 0 0 #ea36af,
+			-0.5px 0 0 #75fa69;
+	}
+	to {
+		text-shadow:
+			1px 0.5px 1px #ea36af,
+			-1px -0.5px 1px #75fa69;
+	}
 }

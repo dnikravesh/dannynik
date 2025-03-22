@@ -46,6 +46,27 @@
 			document.removeEventListener('keydown', handleKeydown); // Cleanup event listener
 		};
 	});
+
+	onMount(() => {
+		const flickerLine = document.getElementById('flicker-line');
+
+		const flicker = () => {
+			if (!flickerLine) return;
+
+			const y = Math.random() * window.innerHeight;
+			flickerLine.style.top = `${y}px`;
+
+			flickerLine.style.opacity = '1';
+
+			setTimeout(() => {
+				flickerLine.style.opacity = '0';
+			}, 40); // duration of the flicker
+
+			setTimeout(flicker, Math.random() * 4000 + 1000); // next flicker
+		};
+
+		flicker();
+	});
 </script>
 
 <svelte:head>
@@ -112,3 +133,5 @@
 		</p>
 	</section>
 </section>
+
+<div id="flicker-line"></div>
