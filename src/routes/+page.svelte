@@ -5,8 +5,8 @@
 
 	let links: NodeListOf<HTMLLIElement>;
 	let currentIndex = 0;
+	let lastTouchY: number | null = null;
 
-	// Function to update the active link
 	const updateActiveLink = () => {
 		links.forEach((link, i) => {
 			if (i === currentIndex) {
@@ -17,9 +17,14 @@
 				link.classList.remove('active');
 			}
 		});
+
+		// ✅ Haptic feedback on supported devices
+		if (navigator.vibrate) {
+			navigator.vibrate(10); // Duration in ms, short sharp tap
+		}
 	};
 
-	// Event listener for keyboard navigation
+	// Keyboard navigation
 	const handleKeydown = (e: KeyboardEvent) => {
 		if (e.key === 'ArrowDown' || e.key === 'j') {
 			currentIndex = (currentIndex + 1) % links.length;
@@ -30,42 +35,70 @@
 		} else if (e.key === 'Enter') {
 			const anchor = links[currentIndex]?.querySelector<HTMLAnchorElement>('a');
 			anchor?.click();
+
+			// Stronger haptic
+			if (navigator.vibrate) {
+				navigator.vibrate([30, 10, 30]); // double-tap feel
+			}
 		}
 	};
 
-	// Setup the links and attach the event listener when the component mounts
+	// Touch scroll navigation
+	const handleTouchMove = (e: TouchEvent) => {
+		if (e.touches.length !== 1) return;
+
+		const touchY = e.touches[0].clientY;
+		if (lastTouchY !== null) {
+			const deltaY = touchY - lastTouchY;
+
+			if (deltaY > 20) {
+				currentIndex = (currentIndex - 1 + links.length) % links.length;
+				updateActiveLink();
+			} else if (deltaY < -20) {
+				currentIndex = (currentIndex + 1) % links.length;
+				updateActiveLink();
+			}
+		}
+		lastTouchY = touchY;
+	};
+
+	const resetTouch = () => {
+		lastTouchY = null;
+	};
+
 	onMount(() => {
 		links = document.querySelectorAll('.link');
 		if (links.length > 0) {
-			updateActiveLink(); // Set the initial active link
+			updateActiveLink();
 
 			document.addEventListener('keydown', handleKeydown);
+			window.addEventListener('touchmove', handleTouchMove, { passive: true });
+			window.addEventListener('touchend', resetTouch);
 		}
 
-		return () => {
-			document.removeEventListener('keydown', handleKeydown); // Cleanup event listener
-		};
-	});
-
-	onMount(() => {
+		// Flicker line effect
 		const flickerLine = document.getElementById('flicker-line');
 
 		const flicker = () => {
 			if (!flickerLine) return;
-
 			const y = Math.random() * window.innerHeight;
 			flickerLine.style.top = `${y}px`;
-
 			flickerLine.style.opacity = '1';
 
 			setTimeout(() => {
 				flickerLine.style.opacity = '0';
-			}, 40); // duration of the flicker
+			}, 40);
 
-			setTimeout(flicker, Math.random() * 4000 + 1000); // next flicker
+			setTimeout(flicker, Math.random() * 4000 + 1000);
 		};
 
 		flicker();
+
+		return () => {
+			document.removeEventListener('keydown', handleKeydown);
+			window.removeEventListener('touchmove', handleTouchMove);
+			window.removeEventListener('touchend', resetTouch);
+		};
 	});
 </script>
 
@@ -99,7 +132,7 @@
 	</header>
 
 	<nav aria-labelledby="links-heading">
-		<h2 class="sr-only">Links</h2>
+		<h2 id="links-heading" class="sr-only">Links</h2>
 		<ul class="space-y-6 pl-8 lg:pl-16">
 			<li class="link">
 				<a target="_blank" rel="noopener nofollow" href="https://github.com/dsdannynikravesh">
@@ -126,7 +159,7 @@
 	<section aria-label="Keyboard Controls">
 		<h2 class="sr-only">Keyboard Controls</h2>
 		<p>
-			Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key
+			Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key or scroll
 		</p>
 		<p>
 			Set &nbsp;&nbsp;&nbsp;:&nbsp;<kbd>↵</kbd> key
