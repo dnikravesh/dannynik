@@ -159,7 +159,7 @@
 	<section aria-label="Keyboard Controls">
 		<h2 class="sr-only">Keyboard Controls</h2>
 		<p>
-			Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key or scroll
+			Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key
 		</p>
 		<p>
 			Set &nbsp;&nbsp;&nbsp;:&nbsp;<kbd>↵</kbd> key
