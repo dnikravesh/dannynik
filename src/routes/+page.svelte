@@ -21,10 +21,10 @@
 
 	// Event listener for keyboard navigation
 	const handleKeydown = (e: KeyboardEvent) => {
-		if (e.key === 'ArrowDown') {
+		if (e.key === 'ArrowDown' || e.key === 'j') {
 			currentIndex = (currentIndex + 1) % links.length;
 			updateActiveLink();
-		} else if (e.key === 'ArrowUp') {
+		} else if (e.key === 'ArrowUp' || e.key === 'k') {
 			currentIndex = (currentIndex - 1 + links.length) % links.length;
 			updateActiveLink();
 		} else if (e.key === 'Enter') {

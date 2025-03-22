@@ -34,8 +34,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@fontsource/vt323": "^5.1.0",
-		"@typescript-eslint/eslint-plugin": "^8.18.2",
+		"@typescript-eslint/eslint-plugin": "^9.18.2",
 		"@typescript-eslint/parser": "^8.18.2"
 	}
 }
