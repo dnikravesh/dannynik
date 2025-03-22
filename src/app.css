@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 
-/* Define your custom colors as CSS variables */
 :root {
 	--blue: #0a0192;
 	--neutral: #cccccc;
@@ -14,7 +13,10 @@
 	font-display: swap;
 }
 
-/* Use Tailwind utilities with CSS variables */
+html: {
+	@apply bg-[var(--blue)];
+}
+
 body {
 	font-family: 'VT323', monospace;
 	@apply min-h-screen bg-[var(--blue)] px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;

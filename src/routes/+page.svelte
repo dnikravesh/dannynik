@@ -53,6 +53,9 @@
 	<meta name="description" content="Software Engineer @[DS]" />
 	<meta name="keywords" content="Danny Nikravesh, Software Engineer, DS, Delicious Simplicity" />
 </svelte:head>
+
+<h1 class="sr-only">Danny Nikravesh Software Engineer</h1>
+
 <div class="text-center text-4xl md:text-6xl lg:text-8xl">
 	{#each dashes as dash, index}
 		<span class={index % 2 === 0 ? 'hidden xl:inline' : 'inline'}>{dash}</span>
@@ -63,43 +66,49 @@
 	{/each}
 </div>
 
-<div class="mx-auto mt-8 max-w-xl space-y-6 sm:max-w-2xl lg:mt-16 lg:max-w-5xl">
-	<div>Danny Nikravesh</div>
-	<div class="my-4">
-		Software Engineer <a
-			target="_blank"
-			rel="noopener nofollow"
-			href="https://www.delicious-simplicity.com/">@[DS]</a
-		>
-	</div>
-	<ul class="space-y-6 pl-8 lg:pl-16">
-		<li class="link">
-			<a target="_blank" rel="noopener nofollow" href="https://github.com/dsdannynikravesh"
-				>Github</a
-			>
-		</li>
-		<li class="link">
-			<a
-				target="_blank"
-				rel="noopener nofollow"
-				href="https://www.linkedin.com/in/daniel-nikravesh/">LinkedIn</a
-			>
-		</li>
-		<li class="link">
-			<a target="_blank" rel="noopener nofollow" href="mailto:dannynikravesh@gmail.com">Email</a>
-		</li>
-	</ul>
-	<div>
-		Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key
-	</div>
-	<div>
-		Set &nbsp;&nbsp;&nbsp;:&nbsp;<kbd>↵</kbd> key
-	</div>
-</div>
+<section class="mx-auto mt-8 max-w-xl space-y-6 sm:max-w-2xl lg:mt-16 lg:max-w-5xl">
+	<header>
+		<h2>Danny Nikravesh</h2>
+		<p class="my-4">
+			Software Engineer
+			<a target="_blank" rel="noopener nofollow" href="https://www.delicious-simplicity.com/">
+				@[DS]
+			</a>
+		</p>
+	</header>
 
-<style>
-	@reference "tailwindcss";
-	:global(html) {
-		background-color: theme(--color-gray-100);
-	}
-</style>
+	<nav aria-labelledby="links-heading">
+		<h2 class="sr-only">Links</h2>
+		<ul class="space-y-6 pl-8 lg:pl-16">
+			<li class="link">
+				<a target="_blank" rel="noopener nofollow" href="https://github.com/dsdannynikravesh">
+					GitHub
+				</a>
+			</li>
+			<li class="link">
+				<a
+					target="_blank"
+					rel="noopener nofollow"
+					href="https://www.linkedin.com/in/daniel-nikravesh/"
+				>
+					LinkedIn
+				</a>
+			</li>
+			<li class="link">
+				<a target="_blank" rel="noopener nofollow" href="mailto:dannynikravesh@gmail.com">
+					Email
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<section aria-label="Keyboard Controls">
+		<h2 class="sr-only">Keyboard Controls</h2>
+		<p>
+			Select&nbsp;:&nbsp;<kbd>▲</kbd> <kbd>▼</kbd> key
+		</p>
+		<p>
+			Set &nbsp;&nbsp;&nbsp;:&nbsp;<kbd>↵</kbd> key
+		</p>
+	</section>
+</section>
