@@ -1,6 +1,10 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+
+/* Define your custom colors as CSS variables */
+:root {
+	--blue: #0a0192;
+	--neutral: #cccccc;
+}
 
 @font-face {
 	font-family: 'VT323';
@@ -10,15 +14,20 @@
 	font-display: swap;
 }
 
+/* Use Tailwind utilities with CSS variables */
 body {
 	font-family: 'VT323', monospace;
-	@apply bg-blue px-6 text-4xl uppercase text-neutral selection:bg-neutral selection:text-blue md:text-6xl lg:text-8xl;
+	@apply min-h-screen bg-[var(--blue)] px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;
+}
+
+::selection {
+	@apply bg-[var(--neutral)] text-[var(--blue)];
 }
 
 a {
-	@apply underline outline-none hover:bg-white hover:text-blue active:bg-white active:text-blue;
+	@apply underline outline-none hover:bg-white hover:text-[var(--blue)] active:bg-white active:text-[var(--blue)];
 }
 
 li.active > a {
-	@apply bg-white text-blue;
+	@apply bg-white text-[var(--blue)];
 }
