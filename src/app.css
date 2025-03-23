@@ -24,7 +24,7 @@ html {
 	);
 	background-size: 100% 1px;
 	background-repeat: repeat-y;
-	@apply overflow-hidden bg-[var(--blue)];
+	@apply bg-[var(--blue)];
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 	/* Toned-down CRT flicker */
 	animation: textflicker 1s infinite alternate ease-in-out;
 
-	@apply min-h-screen bg-[var(--blue)] px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;
+	@apply max-h-screen px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;
 }
 
 ::selection {
@@ -46,6 +46,10 @@ a {
 
 li.active > a {
 	@apply bg-white text-[var(--blue)];
+}
+
+.link.active::before {
+	@apply mr-3 -ml-8 content-['▸'];
 }
 
 #flicker-line {

@@ -18,7 +18,6 @@
 			}
 		});
 
-		// ✅ Haptic feedback on supported devices
 		if (navigator.vibrate) {
 			navigator.vibrate(10); // Duration in ms, short sharp tap
 		}
