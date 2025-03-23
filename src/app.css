@@ -33,7 +33,7 @@ body {
 	/* Toned-down CRT flicker */
 	animation: textflicker 1s infinite alternate ease-in-out;
 
-	@apply max-h-screen px-6 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:text-8xl;
+	@apply max-h-screen px-5 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:px-6 lg:text-8xl;
 }
 
 ::selection {
@@ -49,7 +49,7 @@ li.active > a {
 }
 
 .link.active::before {
-	@apply mr-3 -ml-8 content-['▸'] lg:mr-2 lg:-ml-16;
+	@apply mr-2 -ml-8 content-['▸'] sm:mr-0 lg:mr-2 lg:-ml-16;
 }
 
 #flicker-line {
