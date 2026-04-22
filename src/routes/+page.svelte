@@ -119,7 +119,7 @@
 	{/each}
 </div>
 
-<section class="mx-auto mt-8 max-w-xl space-y-6 sm:max-w-2xl lg:mt-16 lg:max-w-5xl">
+<section class="mx-auto mt-4 max-w-xl space-y-6 sm:max-w-2xl lg:mt-8 lg:max-w-5xl">
 	<header>
 		<h2>Danny Nikravesh</h2>
 		<p class="my-4">

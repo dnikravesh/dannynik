@@ -33,7 +33,7 @@ body {
 	/* Toned-down CRT flicker */
 	animation: textflicker 1s infinite alternate ease-in-out;
 
-	@apply max-h-screen px-5 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:px-6 lg:text-8xl;
+	@apply flex h-screen flex-col justify-center overflow-hidden px-5 text-4xl text-[var(--neutral)] uppercase md:text-6xl lg:px-6 lg:text-8xl;
 }
 
 ::selection {
